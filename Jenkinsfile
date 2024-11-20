@@ -9,7 +9,7 @@ pipeline {
         stage('Source') {
             steps {
                 script {
-                    git branch: parameters.branch,
+                    git branch: params.branch,
                     credentialsId: 'jenkins_github_access',
                     url: "git@github.com:ldoctori/${artifactId}.git"
                 }
