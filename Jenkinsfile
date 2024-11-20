@@ -41,15 +41,13 @@ pipeline {
         }
 
         stage('Clean') {
-            cleanWs()
-            sh "cd ~/.m2/repository; rm -rf *"
-            sh "docker rmi ${env.IMAGE_NAME}"
+            steps {
+                script {
+                    cleanWs()
+                    sh "cd ~/.m2/repository; rm -rf *"
+                    sh "docker rmi ${env.IMAGE_NAME}"
+                }
+            }
         }
     }
-    post {
-        always {
-            cleanWs()
-        }
-    }
-
 }
